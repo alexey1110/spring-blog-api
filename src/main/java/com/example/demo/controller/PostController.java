@@ -2,6 +2,8 @@ package com.example.demo.controller;
 
 import com.example.demo.model.Post;
 import com.example.demo.repository.PostRepository;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -20,12 +22,15 @@ public class PostController {
     }
 
     @Tag(name = "get_all_posts")
+    @Operation(summary = "Get all posts", description = "Returns list of posts")
     @GetMapping
     public List<Post> getPosts(){
         return postRepository.findAll();
     }
 
     @Tag(name = "create_post")
+    @Operation(summary = "Create a new post")
+    @ApiResponse(responseCode = "201", description = "Post created")
     @PostMapping
     public Post createPost(@RequestBody Post post){
         return postRepository.save(post);
