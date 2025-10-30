@@ -2,7 +2,9 @@ package com.example.demo.model;
 
 import jakarta.persistence.*;
 import lombok.Data;
-import lombok.NonNull;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "posts")
@@ -17,4 +19,7 @@ public class Post {
 
     @Column(columnDefinition = "TEXT")
     private String content;
+
+    @OneToMany(mappedBy = "post", cascade = CascadeType.ALL)
+    private List<Comment> comments = new ArrayList<>();
 }

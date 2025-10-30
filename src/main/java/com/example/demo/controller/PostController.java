@@ -35,4 +35,20 @@ public class PostController {
     public Post createPost(@RequestBody Post post){
         return postRepository.save(post);
     }
+
+    @Tag(name = "delete_post")
+    @Operation(summary = "Delete a post")
+    @DeleteMapping("/{id}")
+    public void deletePost(@PathVariable Long id){
+        if(postRepository.existsById(id)){
+            postRepository.deleteById(id);
+        }
+    }
+
+    @Tag(name = "get_post_by_id")
+    @Operation(summary = "Get post by id")
+    @GetMapping("/{id}")
+    public Post getPostById(Long id){
+        return postRepository.findById(id).orElse(null);
+    }
 }
