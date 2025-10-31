@@ -9,7 +9,7 @@ import lombok.Data;
 public class Comment {
     @Id
     @GeneratedValue
-    private String id;
+    private Long id;
 
     @Column(name = "text")
     private String text;
