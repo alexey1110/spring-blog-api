@@ -50,7 +50,7 @@ public class PostController {
     @Tag(name = "get_post_by_id")
     @Operation(summary = "Get post by id")
     @GetMapping("/{id}")
-    public PostDTO getPost(Long id){
+    public PostDTO getPost(@PathVariable Long id){
         return postService.getById(id);
     }
 }

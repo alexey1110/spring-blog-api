@@ -56,7 +56,7 @@ public class CommentController {
     @Tag(name = "get_comments_by_post_id")
     @Operation(summary = "get comments by post id")
     @GetMapping("/post/{id}")
-    public List<CommentDTO> getCommentsByPostId(Long id) {
+    public List<CommentDTO> getCommentsByPostId(@PathVariable Long id) {
         return commentService.getByPostId(id);
     }
 }
