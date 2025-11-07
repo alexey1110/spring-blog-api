@@ -4,6 +4,7 @@ import com.example.demo.DTO.CommentDTO;
 import com.example.demo.Service.CommentService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -32,7 +33,7 @@ public class CommentController {
     @Operation(summary = "add comment")
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping("/post/{id}")
-    public void createComment(CommentDTO commentDTO,
+    public void createComment(@Valid @RequestBody CommentDTO commentDTO,
                               @PathVariable Long postId) {
         commentService.create(commentDTO, postId);
     }

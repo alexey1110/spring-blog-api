@@ -1,6 +1,8 @@
 package com.example.demo.DTO;
 
 import com.example.demo.model.Comment;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -10,6 +12,9 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class CommentDTO {
     private Long id;
+
+    @NotBlank(message = "Title is required")
+    @Size(min = 1, max = 1000, message = "Title must be between 3 and 100 characters")
     private String text;
 
     public static CommentDTO fromEntity(Comment comment) {

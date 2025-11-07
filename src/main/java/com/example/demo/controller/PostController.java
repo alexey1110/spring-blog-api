@@ -5,6 +5,7 @@ import com.example.demo.Service.PostService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -34,7 +35,7 @@ public class PostController {
     @ApiResponse(responseCode = "201", description = "Post created")
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping
-    public PostDTO createPost(@RequestBody PostDTO postDTO){
+    public PostDTO createPost(@Valid @RequestBody PostDTO postDTO){
         return postService.create(postDTO);
     }
 
