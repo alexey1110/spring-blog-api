@@ -34,15 +34,15 @@ public class CommentController {
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping("/post/{id}")
     public void createComment(@Valid @RequestBody CommentDTO commentDTO,
-                              @PathVariable Long postId) {
-        commentService.create(commentDTO, postId);
+                              @PathVariable Long id) {
+        commentService.create(commentDTO, id);
     }
 
     @Tag(name = "delete_comment")
     @Operation(summary = "delete comment")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    @PostMapping("/delete")
-    public void deleteComment(Long id) {
+    @DeleteMapping("/{id}")
+    public void deleteComment(@PathVariable Long id) {
         commentService.delete(id);
     }
 
